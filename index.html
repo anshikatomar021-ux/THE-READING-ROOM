@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE READING ROOM</title>
+<link rel="stylesheet"href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header>
+     <h1>📚THE <span class="highlight">READING</span> ROOM</h1>
+     <h2>Find your next obsession</h2>
+ </header>
+
+ <main class="search-section">
+   <div class="filters">
+<label for="genre">Select Genre</label>
+ <select id="genre">
+     <option value="">-- Choose Genre --</option>
+     <option value="romance">Romance</option>
+     <option value="thriller">Thriller</option>
+     <option value="fantasy">Fantasy</option>
+     <option value="horror">Horror</option>
+    <option value="mystery">Mystery</option>
+    <option value="fiction">Fiction</option>
+ </select>
+</div>
+
+
+<div class="filter-box">
+ <label for="trope">Select Trope</label>
+   <select id="trope">
+        <option value="">-- Choose Trope --</option>
+        <option value="enemies to lovers">Enemies to Lovers</option>
+        <option value="slowburn">Slowburn</option>
+        <option value="Isolation and madness">Isolation and madness</option>
+        <option value="found family">Found Family</option>
+        <option value="revenge">Revenge</option>
+        <option value="love triangle">Love Triangle</option>
+        <option value="survival">Survival</option>
+ </select>
+</div>
+
+ <button id="recommendBtn">Recommend Books</button>
+</main>
+
+ <section class="results-area">
+            <h2>Handpicked just for you</h2>
+            <div id="bookContainer" class="book-grid">
+                <p class="placeholder">Select options above to see recommendations!</p>
+            </div>
+        </section>
+
+        <!-- BOOK CARDS WILL APPEAR HERE -->
+            
+            <!-- Example card (JS will generate real ones) -->
+            <!--
+            <div class="book-card">
+                <img src="images/sample.jpg" alt="Book Cover">
+                <h3>Book Title</h3>
+                <p class="author">Author Name</p>
+                <p class="description">Short book description...</p>
+            </div>
+            -->
+
+    
+
+    <footer>
+        <p>Made with ❤️ by Team console.log</p>
+    </footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
