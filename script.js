@@ -45,11 +45,11 @@ const books = [
     { id: 12, title: "Tidespeaker", author: "Sadie Turner", genre: "mystery", trope: "survival", image: "images/book (12).jpeg", desc: "A coastal mystery centered on family secrets and a missing person case." },
     { id: 41, title: "A Pretender's Murder", author: "Christopher Huang", genre: "mystery", trope: "revenge", image: "images/book (12).jpeg", desc: "Historical detective fiction featuring aristocratic impersonation." },
 
-    // --- FICTION/HISTORY (1-4) ---
-    { id: 1, title: "Midnight's Children", author: "Salman Rushdie", genre: "history", trope: "found family", image: "images/book (1).jpeg", desc: "Magical realism exploring nation-building and destiny." },
-    { id: 2, title: "The Book Thief", author: "Markus Zusak", genre: "history", trope: "found family", image: "images/book (2).jpeg", desc: "A story of survival and war narrated by Death himself." },
-    { id: 3, title: "The Kite Runner", author: "Khaled Hosseini", genre: "history", trope: "revenge", image: "images/book (3).jpeg", desc: "An emotional journey of guilt and redemption set against a war backdrop." },
-    { id: 4, title: "The White Tiger", author: "Aravind Adiga", genre: "history", trope: "survival", image: "images/book (4).jpeg", desc: "A social fiction about the rise from poverty and an anti-hero's journey." }
+    // --- FICTION (1-4) ---
+    { id: 1, title: "Midnight's Children", author: "Salman Rushdie", genre: "fiction", trope: "found family", image: "images/book (1).jpeg", desc: "Magical realism exploring nation-building and destiny." },
+    { id: 2, title: "The Book Thief", author: "Markus Zusak", genre: "fiction", trope: "found family", image: "images/book (2).jpeg", desc: "A story of survival and war narrated by Death himself." },
+    { id: 3, title: "The Kite Runner", author: "Khaled Hosseini", genre: "fiction", trope: "revenge", image: "images/book (3).jpeg", desc: "An emotional journey of guilt and redemption set against a war backdrop." },
+    { id: 4, title: "The White Tiger", author: "Aravind Adiga", genre: "fiction", trope: "survival", image: "images/book (4).jpeg", desc: "A social fiction about the rise from poverty and an anti-hero's journey." }
 ];
 
 // 2. DOM SELECTION
