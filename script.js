@@ -1,5 +1,7 @@
-// 1. DATA: The Master Library 
-// (I have updated this with the exact info you provided!)
+//==================
+//  ARRAY STORING THE DATA OF BOOKS
+//==================
+
 const books = [
     // --- ROMANCE ---
     { title: "Jane Eyre", author: "Charlotte Brontë", genre: "romance", trope: "slow burn", image: "images/book (35).jpeg", desc: "A gothic masterpiece featuring a brooding hero and a slow-burn mystery." },
@@ -52,68 +54,71 @@ const books = [
     { title: "The Kite Runner", author: "Khaled Hosseini", genre: "fiction", trope: "revenge", image: "images/book (3).jpeg", desc: "An emotional journey of guilt and redemption." },
     { title: "The White Tiger", author: "Aravind Adiga", genre: "fiction", trope: "survival", image: "images/book (4).jpeg", desc: "Rise from poverty and an anti-hero's journey." }
 ];
-
-// 2. DOM SELECTION (Finding our HTML elements)
+// DOM SELECTION//
 const recommendBtn = document.getElementById('recommendBtn');
 const bookContainer = document.getElementById('bookContainer');
+const themeToggle = document.getElementById('themeToggle'); // Added this for the button
 
-// 3. FILTERING LOGIC (The Beginner-Friendly Way)
+// ==========================================
+// 3. THE DARK MODE SWITCH 
+// ==========================================
+themeToggle.addEventListener('click', function() {
+    // Logic: Target the body and "Toggle" (add if missing, remove if present) the class
+    document.body.classList.toggle('dark-mode');
+
+    // Change the button text to know what's happening
+    if (document.body.classList.contains('dark-mode')) {
+        themeToggle.textContent = '☀️ Light Mode';
+    } else {
+        themeToggle.textContent = '🌙 Dark Mode';
+    }
+});
+
+// ==========================================
+// 4. FILTERING LOGIC 
+// ==========================================
 recommendBtn.addEventListener('click', function() {
-    // 1. Get what the user chose
     const selectedGenre = document.getElementById('genre').value;
     const selectedTrope = document.getElementById('trope').value;
 
-    // 2. Make an empty list to put the matching books in
-    let matches = [];
+    let matches = [];//empty space for selected books
 
-    // 3. LOOP through every book in our library
     for (let i = 0; i < books.length; i++) {
         let currentBook = books[i];
 
-        // CHECK GENRE: Does it match? (Or did they pick "All"?)
-        let genreIsRight = false;
-        if (selectedGenre === "" || currentBook.genre === selectedGenre) {
-            genreIsRight = true;
-        }
+        let genreIsRight = (selectedGenre === "" || currentBook.genre === selectedGenre);
+        let tropeIsRight = (selectedTrope === "" || currentBook.trope === selectedTrope);
 
-        // CHECK TROPE: Does it match? (Or did they pick "All"?)
-        let tropeIsRight = false;
-        if (selectedTrope === "" || currentBook.trope === selectedTrope) {
-            tropeIsRight = true;
-        }
-
-        // If BOTH are true, add this book to our matches list
-        if (genreIsRight === true && tropeIsRight === true) {
+        if (genreIsRight && tropeIsRight) {
             matches.push(currentBook);
         }
     }
 
-    // 4. Send our matching books to the display function
     displayBooks(matches);
 });
 
-// 4. RENDERING FUNCTION (Showing the cards)
-function displayBooks(results) {
-    const bookContainer = document.getElementById('bookContainer');
-    bookContainer.innerHTML = ""; // Clear current display
+// 5. RENDERING FUNCTION (Showing the cards)
+function displayBooks(bookList) {
+    bookContainer.innerHTML = "";
 
-    if (results.length === 0) {
+    if (bookList.length === 0) {
         bookContainer.innerHTML = `<p class="placeholder">No books match that combo! Try another selection.</p>`;
         return;
     }
 
-    // Classic loop for beginner-friendly code
-    for (let i = 0; i < results.length; i++) {
-        let book = results[i];
+    for (let j = 0; j < bookList.length; j++) {
+        let book = bookList[j];
+
         const card = document.createElement('div');
         card.className = 'book-card';
         
         card.innerHTML = `
             <img src="${book.image}" alt="${book.title} cover">
             <h3>${book.title}</h3>
-            <p class="author">${book.author}</p>
+            <p class="author">By ${book.author}</p>
             <p class="description">${book.desc}</p>
         `;
+        
         bookContainer.appendChild(card);
     }
 }
