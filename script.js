@@ -55,15 +55,21 @@ const books = [
     { title: "The White Tiger", author: "Aravind Adiga", genre: "fiction", trope: "survival", image: "images/book (4).jpeg", desc: "Rise from poverty and an anti-hero's journey." }
 ];
 // DOM SELECTION//
+// Connecting our JavaScript to the HTML elements.
+// We use IDs to target the specific button
+// I'm grabbing the container where books will go 
+// and the buttons that trigger my functions.
 const recommendBtn = document.getElementById('recommendBtn');
 const bookContainer = document.getElementById('bookContainer');
 const themeToggle = document.getElementById('themeToggle'); // Added this for the button
 
 // ==========================================
-// 3. THE DARK MODE SWITCH 
+//  THE DARK MODE SWITCH 
+// swap the entire site's theme using CSS variables
+// with just a single click.
 // ==========================================
 themeToggle.addEventListener('click', function() {
-    // Logic: Target the body and "Toggle" (add if missing, remove if present) the class
+    // Logic: Target the body and "Toggle"
     document.body.classList.toggle('dark-mode');
 
     // Change the button text to know what's happening
@@ -76,6 +82,8 @@ themeToggle.addEventListener('click', function() {
 
 // ==========================================
 // 4. FILTERING LOGIC 
+//It compares user 
+// input against the book array to find matches.
 // ==========================================
 recommendBtn.addEventListener('click', function() {
     const selectedGenre = document.getElementById('genre').value;
@@ -83,9 +91,11 @@ recommendBtn.addEventListener('click', function() {
 
     let matches = [];//empty space for selected books
 
+    // checking every book in the array
     for (let i = 0; i < books.length; i++) {
         let currentBook = books[i];
 
+//LOGIC: A book is a match if the genre matches OR if the user didn't pick a genre yet
         let genreIsRight = (selectedGenre === "" || currentBook.genre === selectedGenre);
         let tropeIsRight = (selectedTrope === "" || currentBook.trope === selectedTrope);
 
@@ -93,25 +103,29 @@ recommendBtn.addEventListener('click', function() {
             matches.push(currentBook);
         }
     }
-
+ //send matching books for display
     displayBooks(matches);
 });
 
 // 5. RENDERING FUNCTION (Showing the cards)
+// Clear out the previous results so they don't stack up
 function displayBooks(bookList) {
     bookContainer.innerHTML = "";
 
+    // Handle the "No Results" case gracefully
     if (bookList.length === 0) {
         bookContainer.innerHTML = `<p class="placeholder">No books match that combo! Try another selection.</p>`;
         return;
     }
 
+// Loop through the matches and build a Card for each one
     for (let j = 0; j < bookList.length; j++) {
         let book = bookList[j];
 
         const card = document.createElement('div');
         card.className = 'book-card';
         
+    // Injecting the data into a template literal    
         card.innerHTML = `
             <img src="${book.image}" alt="${book.title} cover">
             <h3>${book.title}</h3>
